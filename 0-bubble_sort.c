@@ -7,20 +7,25 @@
  */
 void bubble_sort(int *array, size_t size)
 {
-	size_t i, j, n;
+	size_t i, len = size;
+	bool bubbly = false;
 
-	for (i = 0; i < size; i++)
+	if (array == NULL || size < 2)
+		return;
+
+	while (bubbly == false)
 	{
-		for (j = 1; j < size - i; j++)
+		bubbly = true;
+		for (i = 0; i < len - 1; i++)
 		{
-			if (array[j - 1] > array[j])
+			if (array[i] > array[i + 1])
 			{
-				n = array[j];
-				array[j] = array[j - 1];
-				array[j - 1] = n;
+				swap_ints(array + i, array + i + 1);
 				print_array(array, size);
+				bubbly = false;
 			}
 		}
+		len--;
 	}
 }
 
