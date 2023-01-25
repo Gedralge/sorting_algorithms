@@ -7,31 +7,25 @@
  */
 void selection_sort(int *array, size_t size)
 	{
-		size_t i, j, n, k;
-		int aux, flag;
+		size_t i, c, less, tmp, swap;
 
-		if (array)
+		if (array == NULL)
+			return;
+		for (i = 0; i < size; i++)
 		{
-			for (i = 0; i < size; i++)
+			for (less = i, c = i; c < size; c++)
+				if (array[c] < array[less])
+				{
+					less = c;
+					swap = 1;
+				}
+			if (swap == 1)
 			{
-				aux = array[i];
-				flag = 0;
-				for (j = i; j < size; j++)
-				{
-					if (array[j] < aux)
-					{
-						k = j;
-						aux = array[j];
-						flag = 1;
-					}
-				}
-				if (flag == 1)
-				{
-					n = array[i];
-					array[i] = array[k];
-					array[k] = n;
-					print_array(array, size);
-				}
+				tmp = array[less];
+				array[less] = array[i];
+				array[i] = tmp;
+				print_array(array, size);
+				swap = 0;
 			}
 		}
 	}
