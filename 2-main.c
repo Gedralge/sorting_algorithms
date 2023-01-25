@@ -1,20 +1,24 @@
-#include "sort.h"
+#include <stdlib.h>
+#include <stdio.h>
 
 /**
- * main - Entry point
+ * print_array - prints an array of integers
  *
- * Return: Always 0
+ * @array: The array to be printed
+ * @size: Number of elements in @array
  */
-int main(void)
+void print_array(const int *array, size_t size)
 {
-	int array[] = {5, -3, -5, -5, -3};
-	size_t n = sizeof(array) / sizeof(array[0]);
+	size_t i;
 
-	print_array(array, n);
+	i = 0;
+	while (array && i < size)
+	{
+		if (i > 0)
+			printf(", ");
+		printf("%d", array[i]);
+		i++;
+	}
 	printf("\n");
-	selection_sort(array, n);
-	printf("\n");
-	print_array(array, n);
-	return (0);
 }
 
